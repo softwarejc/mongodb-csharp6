@@ -1,0 +1,744 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MongoDB.Driver.GridFS</name>
+    </assembly>
+    <members>
+        <member name="T:MongoDB.Driver.GridFSChunkException">
+            <summary>
+            Represents a GridFSChunk exception.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.GridFSChunkException.#ctor(MongoDB.Bson.BsonValue,System.Int64,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFSChunkException" /> class.
+            </summary>
+            <param name="id">The file id.</param>
+            <param name="n">The chunk number.</param>
+            <param name="reason">The reason.</param>
+        </member>
+        <member name="M:MongoDB.Driver.GridFSChunkException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFSChunkException"/> class.
+            </summary>
+            <param name="info">The SerializationInfo.</param>
+            <param name="context">The StreamingContext.</param>
+        </member>
+        <member name="T:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument">
+            <summary>
+            Represents a GridFS files collection document.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument.#ctor(System.Collections.Generic.IEnumerable{System.String},System.Int32,System.String,MongoDB.Bson.BsonDocument,MongoDB.Bson.BsonValue,System.Int64,System.String,MongoDB.Bson.BsonDocument,System.DateTime)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument" /> class.
+            </summary>
+            <param name="aliases">The aliases.</param>
+            <param name="chunkSizeBytes">Size of the chunk.</param>
+            <param name="contentType">Type of the content.</param>
+            <param name="extraElements">The extra elements.</param>
+            <param name="idAsBsonValue">The identifier.</param>
+            <param name="length">The length.</param>
+            <param name="md5">The MD5.</param>
+            <param name="metadata">The metadata.</param>
+            <param name="uploadDateTime">The upload date time.</param>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument.Aliases">
+            <summary>
+            Gets the aliases.
+            </summary>
+            <value>
+            The aliases.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument.ChunkSizeBytes">
+            <summary>
+            Gets the size of a chunk.
+            </summary>
+            <value>
+            The size of a chunk.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument.ContentType">
+            <summary>
+            Gets the type of the content.
+            </summary>
+            <value>
+            The type of the content.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument.ExtraElements">
+            <summary>
+            Gets the extra elements.
+            </summary>
+            <value>
+            The extra elements.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument.Filename">
+            <summary>
+            Gets the filename.
+            </summary>
+            <value>
+            The filename.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument.Id">
+            <summary>
+            Gets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument.IdAsBsonValue">
+            <summary>
+            Gets the identifier as a BsonValue.
+            </summary>
+            <value>
+            The identifier as a BsonValue.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument.Length">
+            <summary>
+            Gets the length.
+            </summary>
+            <value>
+            The length.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument.MD5">
+            <summary>
+            Gets the MD5 checksum.
+            </summary>
+            <value>
+            The MD5 checksum.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument.Metadata">
+            <summary>
+            Gets the metadata.
+            </summary>
+            <value>
+            The metadata.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFilesCollectionDocument.UploadDateTime">
+            <summary>
+            Gets the upload date time.
+            </summary>
+            <value>
+            The upload date time.
+            </value>
+        </member>
+        <member name="T:MongoDB.Driver.GridFS.GridFSBucket">
+            <summary>
+            Represents a GridFS bucket.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.#ctor(MongoDB.Driver.IMongoDatabase,MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable)">
+            <inheritdoc />
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSBucket.Database">
+            <inheritdoc />
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSBucket.Options">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.DeleteAsync(MongoDB.Bson.BsonValue,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a file from GridFS.
+            </summary>
+            <param name="id">The file id.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.DeleteAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.DownloadAsBytesAsync(MongoDB.Bson.BsonValue,MongoDB.Driver.GridFS.GridFSDownloadOptions,System.Threading.CancellationToken)">
+            <summary>
+            Downloads a file stored in GridFS and returns it as a byte array.
+            </summary>
+            <param name="id">The file id.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task whose result is a byte array containing the contents of the file stored in GridFS.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.DownloadAsBytesAsync(MongoDB.Bson.ObjectId,MongoDB.Driver.GridFS.GridFSDownloadOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.DownloadAsBytesByNameAsync(System.String,MongoDB.Driver.GridFS.GridFSDownloadByNameOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.DownloadToStreamAsync(MongoDB.Bson.BsonValue,System.IO.Stream,MongoDB.Driver.GridFS.GridFSDownloadOptions,System.Threading.CancellationToken)">
+            <summary>
+            Downloads a file stored in GridFS and writes the contents to a stream.
+            </summary>
+            <param name="id">The file id.</param>
+            <param name="destination">The destination.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.DownloadToStreamAsync(MongoDB.Bson.ObjectId,System.IO.Stream,MongoDB.Driver.GridFS.GridFSDownloadOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.DownloadToStreamByNameAsync(System.String,System.IO.Stream,MongoDB.Driver.GridFS.GridFSDownloadByNameOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.FindAsync(MongoDB.Driver.FilterDefinition{MongoDB.Driver.GridFS.GridFSFilesCollectionDocument},MongoDB.Driver.GridFS.GridFSFindOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.OpenDownloadStreamAsync(MongoDB.Bson.BsonValue,MongoDB.Driver.GridFS.GridFSDownloadOptions,System.Threading.CancellationToken)">
+            <summary>
+            Opens a Stream that can be used by the application to read data from a GridFS file.
+            </summary>
+            <param name="id">The file id.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task whose result is a Stream.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.OpenDownloadStreamAsync(MongoDB.Bson.ObjectId,MongoDB.Driver.GridFS.GridFSDownloadOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.OpenDownloadStreamByNameAsync(System.String,MongoDB.Driver.GridFS.GridFSDownloadByNameOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.OpenUploadStreamAsync(System.String,MongoDB.Driver.GridFS.GridFSUploadOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.RenameAsync(MongoDB.Bson.BsonValue,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Renames a GridFS file.
+            </summary>
+            <param name="id">The file id.</param>
+            <param name="newFilename">The new filename.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.RenameAsync(MongoDB.Bson.ObjectId,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.UploadFromBytesAsync(System.String,System.Byte[],MongoDB.Driver.GridFS.GridFSUploadOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucket.UploadFromStreamAsync(System.String,System.IO.Stream,MongoDB.Driver.GridFS.GridFSUploadOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:MongoDB.Driver.GridFS.GridFSBucketOptions">
+            <summary>
+            Represents options for a GridFS instance.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucketOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFS.GridFSBucketOptions"/> class.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucketOptions.#ctor(MongoDB.Driver.GridFS.GridFSBucketOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFS.GridFSBucketOptions"/> class.
+            </summary>
+            <param name="other">The other <see cref="T:MongoDB.Driver.GridFS.GridFSBucketOptions"/> from which to copy the values.</param>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucketOptions.#ctor(MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFS.GridFSBucketOptions"/> class.
+            </summary>
+            <param name="other">The other <see cref="T:MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable"/> from which to copy the values.</param>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSBucketOptions.BucketName">
+            <summary>
+            Gets or sets the bucket name.
+            </summary>
+            <value>
+            The bucket name.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSBucketOptions.ChunkSizeBytes">
+            <summary>
+            Gets or sets the chunk size in bytes.
+            </summary>
+            <value>
+            The chunk size in bytes.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSBucketOptions.ReadPreference">
+            <summary>
+            Gets or sets the read preference.
+            </summary>
+            <value>
+            The read preference.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSBucketOptions.WriteConcern">
+            <summary>
+            Gets or sets the write concern.
+            </summary>
+            <value>
+            The write concern.
+            </value>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucketOptions.ToImmutable">
+            <summary>
+            Returns an immutable GridFSBucketOptions.
+            </summary>
+            <returns>An immutable GridFSBucketOptions.</returns>
+        </member>
+        <member name="T:MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable">
+            <summary>
+            Represents immutable options for a GridFS instance.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable.Defaults">
+            <summary>
+            Gets the default GridFSBucketOptions.
+            </summary>
+            <value>
+            The default GridFSBucketOptions.
+            </value>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable.op_Implicit(MongoDB.Driver.GridFS.GridFSBucketOptions)~MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable">
+            <summary>
+            Performs an implicit conversion from <see cref="T:MongoDB.Driver.GridFS.GridFSBucketOptions"/> to <see cref="T:MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable"/>.
+            </summary>
+            <param name="options">The options.</param>
+            <returns>
+            The result of the conversion.
+            </returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable.#ctor(System.String,System.Int32,MongoDB.Driver.ReadPreference,MongoDB.Driver.WriteConcern)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable"/> class.
+            </summary>
+            <param name="bucketName">The bucket name.</param>
+            <param name="chunkSizeBytes">The chunk size bytes.</param>
+            <param name="readPreference">The read preference.</param>
+            <param name="writeConcern">The write concern.</param>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable.BucketName">
+            <summary>
+            Gets the bucket name.
+            </summary>
+            <value>
+            The bucket name.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable.ChunkSizeBytes">
+            <summary>
+            Gets the chunk size in bytes.
+            </summary>
+            <value>
+            The chunk size in bytes.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable.ReadPreference">
+            <summary>
+            Gets the read preference.
+            </summary>
+            <value>
+            The read preference.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable.WriteConcern">
+            <summary>
+            Gets the write concern.
+            </summary>
+            <value>
+            The write concern.
+            </value>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSBucketOptions.Immutable.ToMutable">
+            <summary>
+            Converts this immutable instance of GridFSBucketOptions to a mutable instance.
+            </summary>
+            <returns>A mutable instance of the GridFSBucketOptions.</returns>
+        </member>
+        <member name="T:MongoDB.Driver.GridFS.GridFSFindOptions">
+            <summary>
+            Represents options for a GridFS Find operation.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFindOptions.BatchSize">
+            <summary>
+            Gets or sets the batch size.
+            </summary>
+            <value>
+            The batch size.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFindOptions.Limit">
+            <summary>
+            Gets or sets the maximum number of documents to return.
+            </summary>
+            <value>
+            The maximum number of documents to return.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFindOptions.MaxTime">
+            <summary>
+            Gets or sets the maximum time the server should spend on the Find.
+            </summary>
+            <value>
+            The maximum time the server should spend on the Find.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFindOptions.NoCursorTimeout">
+            <summary>
+            Gets or sets whether the cursor should not timeout.
+            </summary>
+            <value>
+            Whether the cursor should not timeout.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFindOptions.Skip">
+            <summary>
+            Gets or sets the number of documents to skip.
+            </summary>
+            <value>
+            The number of documents to skip.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSFindOptions.Sort">
+            <summary>
+            Gets or sets the sort order.
+            </summary>
+            <value>
+            The sort order.
+            </value>
+        </member>
+        <member name="T:MongoDB.Driver.GridFS.GridFSDownloadByNameOptions">
+            <summary>
+            Represents options to a GridFS download by name operation.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSDownloadByNameOptions.Revision">
+            <summary>
+            Gets or sets which revision of the file to download.
+            </summary>
+            <value>
+            Which revision of the file to download.
+            </value>
+        </member>
+        <member name="T:MongoDB.Driver.GridFS.GridFSDownloadOptions">
+            <summary>
+            Represents options for a GridFS download operation.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSDownloadOptions.CheckMD5">
+            <summary>
+            Gets or sets a value indicating whether to check the MD5 value.
+            </summary>
+            <value>
+              <c>true</c> if the MD5 value should be checked; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSDownloadOptions.Seekable">
+            <summary>
+            Gets or sets a value indicating whether the returned Stream supports seeking.
+            </summary>
+            <value>
+              <c>true</c> if the returned Stream supports seeking; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:MongoDB.Driver.GridFS.GridFSDownloadStream">
+            <summary>
+            Represents a Stream used by the application to read data from a GridFS file.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSDownloadStream.FilesCollectionDocument">
+            <summary>
+            Gets the files collection document.
+            </summary>
+            <value>
+            The files collection document.
+            </value>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSDownloadStream.CloseAsync(System.Threading.CancellationToken)">
+            <summary>
+            Closes the GridFS stream.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="T:MongoDB.Driver.GridFS.GridFSUploadOptions">
+            <summary>
+            Represents options for a GridFS upload operation.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSUploadOptions.Aliases">
+            <summary>
+            Gets or sets the aliases.
+            </summary>
+            <value>
+            The aliases.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSUploadOptions.BatchSize">
+            <summary>
+            Gets or sets the batch size.
+            </summary>
+            <value>
+            The batch size.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSUploadOptions.ChunkSizeBytes">
+            <summary>
+            Gets or sets the chunk size in bytes.
+            </summary>
+            <value>
+            The chunk size in bytes.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSUploadOptions.ContentType">
+            <summary>
+            Gets or sets the type of the content.
+            </summary>
+            <value>
+            The type of the content.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSUploadOptions.Metadata">
+            <summary>
+            Gets or sets the metadata.
+            </summary>
+            <value>
+            The metadata.
+            </value>
+        </member>
+        <member name="T:MongoDB.Driver.GridFS.GridFSUploadStream">
+            <summary>
+            Represents a Stream used by the application to write data to a GridFS file.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.GridFSUploadStream.Id">
+            <summary>
+            Gets the id of the file being added to GridFS.
+            </summary>
+            <value>
+            The id of the file being added to GridFS.
+            </value>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSUploadStream.AbortAsync(System.Threading.CancellationToken)">
+            <summary>
+            Aborts an upload operation.
+            </summary>
+            <remarks>
+            Any partial results already written to the server are deleted when AbortAsync is called.
+            </remarks>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.GridFSUploadStream.CloseAsync(System.Threading.CancellationToken)">
+            <summary>
+            Closes the Stream and completes the upload operation.
+            </summary>
+            <remarks>
+            Any data remaining in the Stream is flushed to the server and the GridFS files collection document is written.
+            </remarks>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="T:MongoDB.Driver.GridFS.IGridFSBucket">
+            <summary>
+            Represents a GridFS system bucket.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.IGridFSBucket.Database">
+            <summary>
+            Gets the database where the GridFS files are stored.
+            </summary>
+            <value>
+            The database.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.GridFS.IGridFSBucket.Options">
+            <summary>
+            Gets the options.
+            </summary>
+            <value>
+            The options.
+            </value>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.IGridFSBucket.DeleteAsync(MongoDB.Bson.ObjectId,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a file from GridFS.
+            </summary>
+            <param name="id">The file id.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.IGridFSBucket.DownloadAsBytesAsync(MongoDB.Bson.ObjectId,MongoDB.Driver.GridFS.GridFSDownloadOptions,System.Threading.CancellationToken)">
+            <summary>
+            Downloads a file stored in GridFS and returns it as a byte array.
+            </summary>
+            <param name="id">The file id.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task whose result is a byte array containing the contents of the file stored in GridFS.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.IGridFSBucket.DownloadAsBytesByNameAsync(System.String,MongoDB.Driver.GridFS.GridFSDownloadByNameOptions,System.Threading.CancellationToken)">
+            <summary>
+            Downloads a file stored in GridFS and returns it as a byte array.
+            </summary>
+            <param name="filename">The filename.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task whose result is a byte array containing the contents of the file stored in GridFS.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.IGridFSBucket.DownloadToStreamAsync(MongoDB.Bson.ObjectId,System.IO.Stream,MongoDB.Driver.GridFS.GridFSDownloadOptions,System.Threading.CancellationToken)">
+            <summary>
+            Downloads a file stored in GridFS and writes the contents to a stream.
+            </summary>
+            <param name="id">The file id.</param>
+            <param name="destination">The destination.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.IGridFSBucket.DownloadToStreamByNameAsync(System.String,System.IO.Stream,MongoDB.Driver.GridFS.GridFSDownloadByNameOptions,System.Threading.CancellationToken)">
+            <summary>
+            Downloads a file stored in GridFS and writes the contents to a stream.
+            </summary>
+            <param name="filename">The filename.</param>
+            <param name="destination">The destination.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.IGridFSBucket.FindAsync(MongoDB.Driver.FilterDefinition{MongoDB.Driver.GridFS.GridFSFilesCollectionDocument},MongoDB.Driver.GridFS.GridFSFindOptions,System.Threading.CancellationToken)">
+            <summary>
+            Finds matching entries from the files collection.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task whose result is a cursor of files collection documents.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.IGridFSBucket.OpenDownloadStreamAsync(MongoDB.Bson.ObjectId,MongoDB.Driver.GridFS.GridFSDownloadOptions,System.Threading.CancellationToken)">
+            <summary>
+            Opens a Stream that can be used by the application to read data from a GridFS file.
+            </summary>
+            <param name="id">The file id.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task whose result is a Stream.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.IGridFSBucket.OpenDownloadStreamByNameAsync(System.String,MongoDB.Driver.GridFS.GridFSDownloadByNameOptions,System.Threading.CancellationToken)">
+            <summary>
+            Opens a Stream that can be used by the application to read data from a GridFS file.
+            </summary>
+            <param name="filename">The filename.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task whose result is a Stream.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.IGridFSBucket.OpenUploadStreamAsync(System.String,MongoDB.Driver.GridFS.GridFSUploadOptions,System.Threading.CancellationToken)">
+            <summary>
+            Opens a Stream that can be used by the application to write data to a GridFS file.
+            </summary>
+            <param name="filename">The filename.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task whose result is a Stream.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.IGridFSBucket.RenameAsync(MongoDB.Bson.ObjectId,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Renames a GridFS file.
+            </summary>
+            <param name="id">The file id.</param>
+            <param name="newFilename">The new filename.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.IGridFSBucket.UploadFromBytesAsync(System.String,System.Byte[],MongoDB.Driver.GridFS.GridFSUploadOptions,System.Threading.CancellationToken)">
+            <summary>
+            Uploads a file (or a new revision of a file) to GridFS.
+            </summary>
+            <param name="filename">The filename.</param>
+            <param name="source">The source.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task whose result is the id of the new file.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.GridFS.IGridFSBucket.UploadFromStreamAsync(System.String,System.IO.Stream,MongoDB.Driver.GridFS.GridFSUploadOptions,System.Threading.CancellationToken)">
+            <summary>
+            Uploads a file (or a new revision of a file) to GridFS.
+            </summary>
+            <param name="filename">The filename.</param>
+            <param name="source">The source.</param>
+            <param name="options">The options.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A Task whose result is the id of the new file.</returns>
+        </member>
+        <member name="T:MongoDB.Driver.GridFSException">
+            <summary>
+            Represents a GridFS exception.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.GridFSException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFSException"/> class.
+            </summary>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:MongoDB.Driver.GridFSException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFSException"/> class.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:MongoDB.Driver.GridFSException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFSException"/> class.
+            </summary>
+            <param name="info">The SerializationInfo.</param>
+            <param name="context">The StreamingContext.</param>
+        </member>
+        <member name="T:MongoDB.Driver.GridFSFileNotFoundException">
+            <summary>
+            Represents a GridFSFileNotFound exception.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.GridFSFileNotFoundException.#ctor(MongoDB.Bson.BsonValue)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFSFileNotFoundException"/> class.
+            </summary>
+            <param name="id">The file id.</param>
+        </member>
+        <member name="M:MongoDB.Driver.GridFSFileNotFoundException.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFSFileNotFoundException" /> class.
+            </summary>
+            <param name="filename">The filename.</param>
+            <param name="revision">The revision.</param>
+        </member>
+        <member name="M:MongoDB.Driver.GridFSFileNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFSFileNotFoundException"/> class.
+            </summary>
+            <param name="info">The SerializationInfo.</param>
+            <param name="context">The StreamingContext.</param>
+        </member>
+        <member name="T:MongoDB.Driver.GridFSMD5Exception">
+            <summary>
+            Represents a GridFSMD5 exception.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.GridFSMD5Exception.#ctor(MongoDB.Bson.BsonValue)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFSMD5Exception"/> class.
+            </summary>
+            <param name="id">The file id.</param>
+        </member>
+        <member name="M:MongoDB.Driver.GridFSMD5Exception.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.GridFSMD5Exception"/> class.
+            </summary>
+            <param name="info">The SerializationInfo.</param>
+            <param name="context">The StreamingContext.</param>
+        </member>
+    </members>
+</doc>
